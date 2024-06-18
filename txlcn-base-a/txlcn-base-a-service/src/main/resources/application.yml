@@ -1,0 +1,23 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: txlcn-base-a-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/goods
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+  main:
+    allow-bean-definition-overriding: true #开启覆盖相同的feign名称
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8500/eureka
+    instance:
+      prefer-ip-address: true
+      ip-address: 127.0.0.1
+    registry-fetch-interval-seconds: 5
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

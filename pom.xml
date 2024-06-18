@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>spring-cloud-tx-lcn</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <modules>
+        <module>txlcn-registry</module>
+        <module>txlcn-base-a</module>
+        <module>txlcn-base-b</module>
+        <module>txlcn-tm</module>
+    </modules>
+
+    <!--springboot依赖-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.4.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <!--jdk及其版本指定-->
+    <properties>
+        <!-- project -setting -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+
+        <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
+        <codingapi.txlcn.version>5.0.2.RELEASE</codingapi.txlcn.version>
+        <mapper.starter.version>2.1.5</mapper.starter.version>
+        <mysql.version>5.1.48</mysql.version>
+        <pagehelper.starter.version>1.2.13</pagehelper.starter.version>
+
+
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>${mapper.starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+
+            <!--txlcn 依赖-->
+            <dependency>
+                <groupId>com.codingapi.txlcn</groupId>
+                <artifactId>txlcn-tc</artifactId>
+                <version>${codingapi.txlcn.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.codingapi.txlcn</groupId>
+                <artifactId>txlcn-txmsg-netty</artifactId>
+                <version>${codingapi.txlcn.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.codingapi.txlcn</groupId>
+                <artifactId>txlcn-tm</artifactId>
+                <version>${codingapi.txlcn.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
